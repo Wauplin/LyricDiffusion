@@ -1,6 +1,6 @@
 from typing import List
 import shutil
-from huggingface_hub import HfApi, ModelFilter  # notebook_login
+from huggingface_hub import HfApi
 import gui
 
 
@@ -11,9 +11,10 @@ class HuggingFace:
         try:
             api = HfApi()
             models = api.list_models(
-                filter=ModelFilter(
-                    task="text-to-image",
-                ), sort=sort, limit=limit, direction=direction
+                task="text-to-image",
+                sort=sort,
+                limit=limit,
+                direction=direction,
             )
             models = list(models)
 
